@@ -35,7 +35,8 @@ export type TableProps = {
   contentHeight?: number | string,
   isLoading:boolean,
   loadingText: string,
-  loaddingTextStyle?: {}
+  loaddingTextStyle?: {},
+  flexAutoAdjustment?: boolean
 }
 
 type StickyWrapperProps = {
@@ -75,14 +76,40 @@ const Table = (props: TableProps) => {
     contentHeight = "auto",
     isLoading = false,
     loadingText = "Loading...",
-    loaddingTextStyle = {}
+    loaddingTextStyle = {},
+    flexAutoAdjustment = false
   } = props;
+
+  const adjustColumns = React.useMemo<ColumnProps[]>(() => {
+    // No auto adjustment, return user definded columns
+    if (!flexAutoAdjustment)  {
+      return columns;
+    }
+    let totalLength:number, precent:number;
+    // No data, adjust columns by title only
+    if (data.length == 0) {
+      totalLength = columns.map(c => c.title.length).reduce((a,b) => a + b, 0);
+      precent = 100/totalLength;
+      return [...columns].map(c => ({...c, flex: c.title.length * precent}));
+    }
+    // Have data, adjust by title/data (first row)
+    const firstRow = data[0];
+    console.log("first Row", firstRow);
+    console.log("columns", columns)
+    totalLength = columns
+      .map(c => Math.max(c.title.length, `${firstRow[c.dataKey]}`.length))
+      .reduce((a,b) => a + b, 0);
+    console.log("totalLength", totalLength);
+    precent = 100/totalLength;
+    console.log("precent", precent)
+    return [...columns].map(c => ({...c, flex: Math.max(c.title.length, `${firstRow[c.dataKey]}`.length) * precent}));
+  }, [flexAutoAdjustment, columns, data])
 
   return (
     <SafeAreaView style={styles.container}>
       {showHeader &&
         <Row style={headerRowStyle}>
-        {columns.map((column, columnIndex) => (
+        {adjustColumns.map((column, columnIndex) => (
           <Cell key={`row-header-col-${columnIndex}`} flex={column.flex}>
             <Text style={headerRowTextStyle}>{column.title}</Text>
           </Cell>
@@ -95,7 +122,7 @@ const Table = (props: TableProps) => {
       }
       {!isLoading && data.map((dataRow, rowIndex) => (
         <Row key={`row-${rowIndex}`} style={rowStyle} onPress={onPress}>
-          {columns.map((column, columnIndex) => (
+          {adjustColumns.map((column, columnIndex) => (
             <Cell key={`row-${rowIndex}-col-${columnIndex}`} flex={column.flex}>
               <GetCellHandler
                 column={column}

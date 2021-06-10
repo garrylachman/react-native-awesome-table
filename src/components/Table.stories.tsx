@@ -20,6 +20,9 @@ export default {
         max: 100
       }
     },
+    flexAutoAdjustment: {
+      description: 'Auto adujst the column fkex by title/content length',
+    },
     showHeader: {
       description: 'Show/Hide Header',
       table: {
@@ -90,6 +93,7 @@ export const Basic = Template.bind({})
 Basic.args = {
   rowsCount: 1,
   showHeader: true,
+  flexAutoAdjustment: false,
   isLoading: false,
   data: [{id: 1, firstName: 'garry', lastName: 'lachman', country: 'Israel'}],
   columns: [
@@ -168,3 +172,11 @@ IsLoading.args = {
     { flex: 3, title: 'Country', dataKey: 'country'}
   ],
 };
+
+export const FlexAutoAdjustment = Template.bind({});
+
+FlexAutoAdjustment.args = {
+  ...Basic.args,
+  rowsCount: 20,
+  flexAutoAdjustment: true
+}
