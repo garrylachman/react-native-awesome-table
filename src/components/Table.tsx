@@ -7,7 +7,7 @@ type GetCellProp = {
   getCell?: ({data, rowIndex, columnIndex}:CellContentProps) => React.ReactElement
 }
 
-type ColumnProps = {
+export type ColumnProps = {
   flex: number,
   title: string,
   dataKey: string,

@@ -2,7 +2,7 @@
   "name": "react-native-awesome-table",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "storybook": "start-storybook",
     "build-storybook": "build-storybook -o ./docs"
