@@ -12,8 +12,6 @@ const Row = (props: RowProps) => {
     style = {}
   } = props;
 
-  console.log(children)
-
   return (
     <TouchableOpacity style={[styles.container, style]}>
       {children}

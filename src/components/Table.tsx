@@ -94,14 +94,10 @@ const Table = (props: TableProps) => {
     }
     // Have data, adjust by title/data (first row)
     const firstRow = data[0];
-    console.log("first Row", firstRow);
-    console.log("columns", columns)
     totalLength = columns
       .map(c => Math.max(c.title.length, `${firstRow[c.dataKey]}`.length))
       .reduce((a,b) => a + b, 0);
-    console.log("totalLength", totalLength);
     precent = 100/totalLength;
-    console.log("precent", precent)
     return [...columns].map(c => ({...c, flex: Math.max(c.title.length, `${firstRow[c.dataKey]}`.length) * precent}));
   }, [flexAutoAdjustment, columns, data])
 
