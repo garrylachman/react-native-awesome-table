@@ -34,7 +34,7 @@ type DataRow = {
 const columns:ColumnProps[] = [
 	{ 'dataKey': 'id', title: 'ID', flex: 1 },
 	{ 'dataKey': 'firstName', title: 'First Name', flex: 2 },
-	{ 'dataKey': 'lastName', title: 'Last Name', flex: 2 }
+	{ 'dataKey': 'lastName', title: 'Last Name', flex: 2 },
 	{ 'dataKey': 'country', title: 'Country', flex: 3 }
 ]
 
