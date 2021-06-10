@@ -1,6 +1,6 @@
 {
   "name": "react-native-awesome-table",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React-Native Simple Data Tables",
   "homepage": "https://github.com/garrylachman/react-native-awesome-table",
   "keywords": ["react", "react-native", "react tables", "react-native tables", "data tables", "table"],
@@ -15,14 +15,16 @@
     "type": "git",
     "url": "https://github.com/garrylachman/react-native-awesome-table.git"
   },
-  "dependencies": {
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "devDependencies": {
     "@types/react": "^17.0.9",
     "@types/react-native": "^0.64.8",
     "react": "^17.0.2",
     "react-native": "^0.64.1",
-    "react-native-web": "^0.16.3"
-  },
-  "devDependencies": {
+    "react-native-web": "^0.16.3",
     "@storybook/addon-controls": "^6.2.9",
     "@storybook/addon-docs": "^6.2.9",
     "@storybook/addon-knobs": "^6.2.9",
