@@ -1,14 +1,20 @@
 {
   "name": "react-native-awesome-table",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "React-Native Simple Data Tables",
+  "homepage": "https://github.com/garrylachman/react-native-awesome-table",
+  "keywords": ["react", "react-native", "react tables", "react-native tables", "data tables", "table"],
   "main": "index.tsx",
   "scripts": {
     "storybook": "start-storybook",
     "build-storybook": "build-storybook -o ./docs"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Garry Lachman",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/garrylachman/react-native-awesome-table.git"
+  },
   "dependencies": {
     "@types/react": "^17.0.9",
     "@types/react-native": "^0.64.8",
